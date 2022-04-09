@@ -16,7 +16,9 @@ class GenresRepositoryImpl implements GenresRepository {
     final result = await _restClient.get<List<GenresModels>>(
       '/genre/movie/list',
       // ignore: deprecated_member_use
-      query:{ 'api_key': RemoteConfig.instance.getString('api_token')},
+      query:{ 'api_key': RemoteConfig.instance.getString('api_token'),
+      'language' : 'pt-br'
+      },
       decoder: (data) {
         final resultData = data['genres'];
         if (resultData != null) {
